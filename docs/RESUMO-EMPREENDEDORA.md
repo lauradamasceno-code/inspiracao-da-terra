@@ -33,6 +33,6 @@ Os dados dos clientes são seus, e só você deve ter acesso a eles. Por isso o 
 
 | Nome | E-mail | WhatsApp |
 | --- | --- | --- |
-| (preencher) | (preencher) | (preencher) |
-| (preencher) | (preencher) | (preencher) |
-| (preencher) | (preencher) | (preencher) |
+| Laura Faria Damasceno | dlaurafaria@gmail.com | (12)997281389 |
+| Isabela Teixeira Coldibella | isatxx4@gmail.com | (11) 91215-0707 |
+

@@ -10,7 +10,7 @@ Painel de gestão para a Lemaréz Perfumaria: clientes (com LGPD), vendas, custo
 - O botão **Restaurar dados fictícios** (no topo) volta ao estado original. O que for cadastrado na demonstração fica só no navegador de quem está usando.
 
 ## Abas
-Painel, **DRE**, Vendas, Custos, Clientes, Produtos e Catálogo. A quantidade nas vendas é sempre um número inteiro.
+Painel, **DRE**, Vendas, Custos, Clientes, Produtos e Catálogo. A quantidade nas vendas é sempre um número inteiro. Valores em reais são digitados com vírgula nos centavos (120,50); o botão **Como preencher**, no topo do app, explica o formato de cada campo. O CSV sai separado por ponto e vírgula e com vírgula decimal, para abrir direto no Excel em português.
 
 Na aba Catálogo, o botão **Gerar catálogo em PDF** monta um catálogo com o kit de marca (capa, linha feminina IF e linha masculina IM) a partir das fragrâncias cadastradas. Ele usa a impressão do navegador: na janela que abre, escolha *Salvar como PDF*. Se ela adicionar ou editar uma fragrância, o próximo PDF já sai atualizado.
 
@@ -49,7 +49,3 @@ O projeto não usa Google Planilhas. O banco recomendado é o Supabase (PostgreS
 - [Criar o banco de dados](docs/CRIAR-BANCO-DE-DADOS.md)
 - [Armazenamento seguro dos dados](docs/ARMAZENAMENTO-SEGURO.md)
 
-## Equipe
-| Nome | E-mail |
-| --- | --- |
-| (preencher) | (preencher) |
