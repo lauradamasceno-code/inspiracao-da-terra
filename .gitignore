@@ -1,0 +1,7 @@
+# Nunca suba dados reais de clientes ou segredos
+*.csv
+.env
+.env.*
+*.xlsx
+node_modules/
+.DS_Store

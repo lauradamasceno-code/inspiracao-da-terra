@@ -1,0 +1,1884 @@
+{
+ "_aviso": "DADOS FICTÍCIOS. Gerado por scripts/gerar_mock.py. Não contém pessoas nem vendas reais.",
+ "clientes": [
+  {
+   "id": "c0001",
+   "nome": "Marina Alves",
+   "cpf": "",
+   "endereco": "",
+   "email": "marina.alves@exemplo.com.br",
+   "telefone": "11900000001",
+   "nascimento": "1990-11-14",
+   "consentimento": "2026-02-20",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0002",
+   "nome": "Carlos Eduardo Souza",
+   "cpf": "",
+   "endereco": "Rua Exemplo, 114 - São Paulo/SP",
+   "email": "carlos.eduardo.souza@exemplo.com.br",
+   "telefone": "11900000002",
+   "nascimento": "1985-03-02",
+   "consentimento": "2026-09-26",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0003",
+   "nome": "Juliana Prado",
+   "cpf": "000.000.000-13",
+   "endereco": "",
+   "email": "juliana.prado@exemplo.com.br",
+   "telefone": "11900000003",
+   "nascimento": "1993-11-27",
+   "consentimento": "2026-02-17",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0004",
+   "nome": "Rafaela Mendes",
+   "cpf": "",
+   "endereco": "Rua Exemplo, 128 - São Paulo/SP",
+   "email": "",
+   "telefone": "11900000004",
+   "nascimento": "1988-07-19",
+   "consentimento": "2026-09-23",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0005",
+   "nome": "Thiago Ribeiro",
+   "cpf": "",
+   "endereco": "",
+   "email": "thiago.ribeiro@exemplo.com.br",
+   "telefone": "11900000005",
+   "nascimento": "1991-01-30",
+   "consentimento": "2026-09-25",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0006",
+   "nome": "Patrícia Lima",
+   "cpf": "000.000.000-16",
+   "endereco": "Rua Exemplo, 142 - São Paulo/SP",
+   "email": "patricia.lima@exemplo.com.br",
+   "telefone": "11900000006",
+   "nascimento": "1979-09-08",
+   "consentimento": "2026-08-17",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0007",
+   "nome": "Fernanda Castro",
+   "cpf": "",
+   "endereco": "",
+   "email": "fernanda.castro@exemplo.com.br",
+   "telefone": "11900000007",
+   "nascimento": "1995-05-21",
+   "consentimento": "2026-01-12",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0008",
+   "nome": "Bruno Teixeira",
+   "cpf": "",
+   "endereco": "Rua Exemplo, 156 - São Paulo/SP",
+   "email": "",
+   "telefone": "11900000008",
+   "nascimento": "1987-12-05",
+   "consentimento": "2026-02-19",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0009",
+   "nome": "Camila Duarte",
+   "cpf": "000.000.000-19",
+   "endereco": "",
+   "email": "camila.duarte@exemplo.com.br",
+   "telefone": "11900000009",
+   "nascimento": "1992-02-11",
+   "consentimento": "2026-02-24",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0010",
+   "nome": "Lucas Fernandes",
+   "cpf": "",
+   "endereco": "Rua Exemplo, 170 - São Paulo/SP",
+   "email": "lucas.fernandes@exemplo.com.br",
+   "telefone": "11900000010",
+   "nascimento": "1996-08-16",
+   "consentimento": "2026-01-25",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0011",
+   "nome": "Aline Moreira",
+   "cpf": "",
+   "endereco": "",
+   "email": "aline.moreira@exemplo.com.br",
+   "telefone": "11900000011",
+   "nascimento": "1983-04-25",
+   "consentimento": "2026-06-16",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0012",
+   "nome": "Diego Barros",
+   "cpf": "000.000.000-22",
+   "endereco": "Rua Exemplo, 184 - São Paulo/SP",
+   "email": "",
+   "telefone": "11900000012",
+   "nascimento": "1990-10-09",
+   "consentimento": "2026-07-18",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0013",
+   "nome": "Beatriz Nogueira",
+   "cpf": "",
+   "endereco": "",
+   "email": "beatriz.nogueira@exemplo.com.br",
+   "telefone": "11900000013",
+   "nascimento": "1998-06-03",
+   "consentimento": "2026-06-21",
+   "criado": "2026-01-10"
+  },
+  {
+   "id": "c0014",
+   "nome": "Renata Campos",
+   "cpf": "",
+   "endereco": "Rua Exemplo, 198 - São Paulo/SP",
+   "email": "renata.campos@exemplo.com.br",
+   "telefone": "11900000014",
+   "nascimento": "1981-03-18",
+   "consentimento": "2026-07-26",
+   "criado": "2026-01-10"
+  }
+ ],
+ "vendas": [
+  {
+   "id": "v0001",
+   "data": "2026-01-01",
+   "desc": "IM 14",
+   "cliente": "c0009",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM14",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 120
+  },
+  {
+   "id": "v0002",
+   "data": "2026-01-03",
+   "desc": "IM 14",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM14",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 120
+  },
+  {
+   "id": "v0003",
+   "data": "2026-01-04",
+   "desc": "Água de lençol",
+   "cliente": "c0013",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 55
+  },
+  {
+   "id": "v0004",
+   "data": "2026-01-05",
+   "desc": "IF 13",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF13",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0005",
+   "data": "2026-01-13",
+   "desc": "IM 16",
+   "cliente": "c0013",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IM16",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 45
+  },
+  {
+   "id": "v0006",
+   "data": "2026-01-21",
+   "desc": "IM 35",
+   "cliente": "c0002",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM35",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Pagamento online",
+   "valor": 120
+  },
+  {
+   "id": "v0007",
+   "data": "2026-01-22",
+   "desc": "IM 23",
+   "cliente": "c0001",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM23",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0008",
+   "data": "2026-01-23",
+   "desc": "Água de lençol",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Pagamento online",
+   "valor": 55
+  },
+  {
+   "id": "v0009",
+   "data": "2026-01-25",
+   "desc": "IM 35",
+   "cliente": "c0009",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM35",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0010",
+   "data": "2026-01-25",
+   "desc": "Pedido sob demanda",
+   "cliente": "c0012",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "EXTRA",
+   "extra": "Lavanda e cedro",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 150
+  },
+  {
+   "id": "v0011",
+   "data": "2026-01-27",
+   "desc": "IF 43",
+   "cliente": "c0010",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Pagamento online",
+   "valor": 120
+  },
+  {
+   "id": "v0012",
+   "data": "2026-02-01",
+   "desc": "Água de lençol",
+   "cliente": "c0007",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "Débito",
+   "valor": 55
+  },
+  {
+   "id": "v0013",
+   "data": "2026-02-03",
+   "desc": "Água de lençol",
+   "cliente": "c0003",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "PIX",
+   "valor": 55
+  },
+  {
+   "id": "v0014",
+   "data": "2026-02-11",
+   "desc": "IF 43",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Débito",
+   "valor": 120
+  },
+  {
+   "id": "v0015",
+   "data": "2026-02-13",
+   "desc": "Água de lençol",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "Débito",
+   "valor": 55
+  },
+  {
+   "id": "v0016",
+   "data": "2026-02-17",
+   "desc": "IF 43",
+   "cliente": "c0011",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 120
+  },
+  {
+   "id": "v0017",
+   "data": "2026-02-22",
+   "desc": "Água de lençol",
+   "cliente": "c0012",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "Crédito",
+   "valor": 55
+  },
+  {
+   "id": "v0018",
+   "data": "2026-02-24",
+   "desc": "IF 09",
+   "cliente": "c0011",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF09",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 120
+  },
+  {
+   "id": "v0019",
+   "data": "2026-03-01",
+   "desc": "Água de lençol",
+   "cliente": "c0012",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "Débito",
+   "valor": 55
+  },
+  {
+   "id": "v0020",
+   "data": "2026-03-03",
+   "desc": "IF 11",
+   "cliente": "c0010",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF11",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Pagamento online",
+   "valor": 120
+  },
+  {
+   "id": "v0021",
+   "data": "2026-03-04",
+   "desc": "IF 35",
+   "cliente": "c0009",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF35",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 120
+  },
+  {
+   "id": "v0022",
+   "data": "2026-03-09",
+   "desc": "IF 35",
+   "cliente": "c0009",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF35",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0023",
+   "data": "2026-03-17",
+   "desc": "IF 54",
+   "cliente": "c0004",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF54",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0024",
+   "data": "2026-03-19",
+   "desc": "IF 38",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF38",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Débito",
+   "valor": 120
+  },
+  {
+   "id": "v0025",
+   "data": "2026-03-21",
+   "desc": "IF 40",
+   "cliente": "c0010",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF40",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 120
+  },
+  {
+   "id": "v0026",
+   "data": "2026-03-21",
+   "desc": "Água de lençol",
+   "cliente": "c0003",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 55
+  },
+  {
+   "id": "v0027",
+   "data": "2026-03-22",
+   "desc": "IF 35",
+   "cliente": "c0006",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF35",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0028",
+   "data": "2026-04-06",
+   "desc": "IF 09",
+   "cliente": "c0011",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF09",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Pagamento online",
+   "valor": 120
+  },
+  {
+   "id": "v0029",
+   "data": "2026-04-10",
+   "desc": "IF 49",
+   "cliente": "c0009",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF49",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Débito",
+   "valor": 45
+  },
+  {
+   "id": "v0030",
+   "data": "2026-04-22",
+   "desc": "IM 49",
+   "cliente": "c0003",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM49",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0031",
+   "data": "2026-04-24",
+   "desc": "IF 43",
+   "cliente": "c0014",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 120
+  },
+  {
+   "id": "v0032",
+   "data": "2026-04-25",
+   "desc": "IM 23",
+   "cliente": "c0014",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM23",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0033",
+   "data": "2026-04-27",
+   "desc": "IM 15",
+   "cliente": "c0012",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IM15",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 45
+  },
+  {
+   "id": "v0034",
+   "data": "2026-05-01",
+   "desc": "IM 30",
+   "cliente": "c0014",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM30",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 120
+  },
+  {
+   "id": "v0035",
+   "data": "2026-05-02",
+   "desc": "IF 28",
+   "cliente": "c0007",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF28",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0036",
+   "data": "2026-05-15",
+   "desc": "IF 16",
+   "cliente": "c0006",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF16",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Débito",
+   "valor": 120
+  },
+  {
+   "id": "v0037",
+   "data": "2026-05-21",
+   "desc": "IF 16",
+   "cliente": "c0004",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF16",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Débito",
+   "valor": 120
+  },
+  {
+   "id": "v0038",
+   "data": "2026-05-23",
+   "desc": "IM 15",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IM15",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Débito",
+   "valor": 45
+  },
+  {
+   "id": "v0039",
+   "data": "2026-05-27",
+   "desc": "IF 35",
+   "cliente": "c0012",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF35",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0040",
+   "data": "2026-06-05",
+   "desc": "IF 43",
+   "cliente": "c0013",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 45
+  },
+  {
+   "id": "v0041",
+   "data": "2026-06-10",
+   "desc": "IF 35",
+   "cliente": "c0004",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF35",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0042",
+   "data": "2026-06-10",
+   "desc": "IM 20",
+   "cliente": "c0007",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IM20",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0043",
+   "data": "2026-06-12",
+   "desc": "IM 16",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IM16",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 45
+  },
+  {
+   "id": "v0044",
+   "data": "2026-06-22",
+   "desc": "IM 23",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM23",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 120
+  },
+  {
+   "id": "v0045",
+   "data": "2026-06-25",
+   "desc": "IF 16",
+   "cliente": "c0001",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF16",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0046",
+   "data": "2026-06-25",
+   "desc": "IF 02",
+   "cliente": "c0012",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF02",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0047",
+   "data": "2026-06-26",
+   "desc": "IM 21",
+   "cliente": "c0008",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM21",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0048",
+   "data": "2026-06-27",
+   "desc": "Pedido sob demanda",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "EXTRA",
+   "extra": "Baunilha e âmbar",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 150
+  },
+  {
+   "id": "v0049",
+   "data": "2026-07-01",
+   "desc": "IF 43",
+   "cliente": "c0002",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0050",
+   "data": "2026-07-10",
+   "desc": "IF 11",
+   "cliente": "c0006",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF11",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 120
+  },
+  {
+   "id": "v0051",
+   "data": "2026-07-10",
+   "desc": "IF 43",
+   "cliente": "c0010",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0052",
+   "data": "2026-07-12",
+   "desc": "IF 43",
+   "cliente": "c0012",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0053",
+   "data": "2026-07-14",
+   "desc": "IF 49",
+   "cliente": "c0014",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF49",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0054",
+   "data": "2026-07-22",
+   "desc": "Vela aromática",
+   "cliente": "c0006",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Velas aromáticas",
+   "frag": "",
+   "extra": "",
+   "qtd": 3,
+   "pag": "PIX",
+   "valor": 28
+  },
+  {
+   "id": "v0055",
+   "data": "2026-08-03",
+   "desc": "Vela aromática",
+   "cliente": "c0009",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Velas aromáticas",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "PIX",
+   "valor": 28
+  },
+  {
+   "id": "v0056",
+   "data": "2026-08-11",
+   "desc": "IM 15",
+   "cliente": "c0004",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM15",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0057",
+   "data": "2026-08-11",
+   "desc": "IF 43",
+   "cliente": "c0011",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0058",
+   "data": "2026-08-13",
+   "desc": "IF 45",
+   "cliente": "c0011",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF45",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Pagamento online",
+   "valor": 120
+  },
+  {
+   "id": "v0059",
+   "data": "2026-08-13",
+   "desc": "IF 43",
+   "cliente": "c0013",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF43",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0060",
+   "data": "2026-08-14",
+   "desc": "Água de lençol",
+   "cliente": "c0012",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Pagamento online",
+   "valor": 55
+  },
+  {
+   "id": "v0061",
+   "data": "2026-08-22",
+   "desc": "Pedido sob demanda",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "EXTRA",
+   "extra": "Chá branco e musk",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 150
+  },
+  {
+   "id": "v0062",
+   "data": "2026-08-24",
+   "desc": "IF 51",
+   "cliente": "c0005",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF51",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 45
+  },
+  {
+   "id": "v0063",
+   "data": "2026-08-26",
+   "desc": "Vela aromática",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Velas aromáticas",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "PIX",
+   "valor": 28
+  },
+  {
+   "id": "v0064",
+   "data": "2026-09-01",
+   "desc": "IF 49",
+   "cliente": "c0003",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF49",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0065",
+   "data": "2026-09-09",
+   "desc": "Vela aromática",
+   "cliente": "c0008",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Velas aromáticas",
+   "frag": "",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 28
+  },
+  {
+   "id": "v0066",
+   "data": "2026-09-11",
+   "desc": "IM 06",
+   "cliente": "c0004",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IM06",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0067",
+   "data": "2026-09-13",
+   "desc": "Vela aromática",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Velas aromáticas",
+   "frag": "",
+   "extra": "",
+   "qtd": 3,
+   "pag": "Dinheiro",
+   "valor": 28
+  },
+  {
+   "id": "v0068",
+   "data": "2026-09-14",
+   "desc": "Água de lençol",
+   "cliente": "c0007",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 55
+  },
+  {
+   "id": "v0069",
+   "data": "2026-09-19",
+   "desc": "IF 45",
+   "cliente": "c0006",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF45",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 45
+  },
+  {
+   "id": "v0070",
+   "data": "2026-09-22",
+   "desc": "IF 11",
+   "cliente": "c0009",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF11",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0071",
+   "data": "2026-09-22",
+   "desc": "IM 49",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IM49",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0072",
+   "data": "2026-09-23",
+   "desc": "Água de lençol",
+   "cliente": "c0008",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "Crédito",
+   "valor": 55
+  },
+  {
+   "id": "v0073",
+   "data": "2026-09-26",
+   "desc": "Água de lençol",
+   "cliente": "c0005",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 55
+  },
+  {
+   "id": "v0074",
+   "data": "2026-09-27",
+   "desc": "IF 13",
+   "cliente": "c0005",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF13",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 45
+  },
+  {
+   "id": "v0075",
+   "data": "2026-09-28",
+   "desc": "Vela aromática",
+   "cliente": "c0003",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Velas aromáticas",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "Pagamento online",
+   "valor": 28
+  },
+  {
+   "id": "v0076",
+   "data": "2026-10-02",
+   "desc": "IF 21",
+   "cliente": "c0007",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF21",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Crédito",
+   "valor": 120
+  },
+  {
+   "id": "v0077",
+   "data": "2026-10-04",
+   "desc": "IF 13",
+   "cliente": "c0002",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF13",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Dinheiro",
+   "valor": 120
+  },
+  {
+   "id": "v0078",
+   "data": "2026-10-05",
+   "desc": "Água de lençol",
+   "cliente": "",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Água de lençol 200ml",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "PIX",
+   "valor": 55
+  },
+  {
+   "id": "v0079",
+   "data": "2026-10-10",
+   "desc": "IF 35",
+   "cliente": "c0004",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IF35",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0080",
+   "data": "2026-10-14",
+   "desc": "IF 31",
+   "cliente": "c0008",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF31",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 45
+  },
+  {
+   "id": "v0081",
+   "data": "2026-10-16",
+   "desc": "Vela aromática",
+   "cliente": "c0007",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Velas aromáticas",
+   "frag": "",
+   "extra": "",
+   "qtd": 2,
+   "pag": "Crédito",
+   "valor": 28
+  },
+  {
+   "id": "v0082",
+   "data": "2026-10-16",
+   "desc": "IM 49",
+   "cliente": "c0009",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM49",
+   "extra": "",
+   "qtd": 1,
+   "pag": "PIX",
+   "valor": 120
+  },
+  {
+   "id": "v0083",
+   "data": "2026-10-18",
+   "desc": "IM 23",
+   "cliente": "c0002",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM23",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Débito",
+   "valor": 120
+  },
+  {
+   "id": "v0084",
+   "data": "2026-10-24",
+   "desc": "IM 20",
+   "cliente": "c0004",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 50ml",
+   "frag": "IM20",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Débito",
+   "valor": 120
+  },
+  {
+   "id": "v0085",
+   "data": "2026-10-26",
+   "desc": "IF 38",
+   "cliente": "c0009",
+   "tipo": "Receita",
+   "cat": "Receita Operacional Bruta",
+   "produto": "Perfume 15ml",
+   "frag": "IF38",
+   "extra": "",
+   "qtd": 1,
+   "pag": "Débito",
+   "valor": 45
+  }
+ ],
+ "custos": [
+  {
+   "id": "g0001",
+   "data": "2026-01-05",
+   "desc": "Celular da loja",
+   "tipo": "Despesas Adm",
+   "cat": "Fixas e Operacionais",
+   "pag": "Débito",
+   "valor": 134.59
+  },
+  {
+   "id": "g0002",
+   "data": "2026-01-09",
+   "desc": "Taxa de manutenção",
+   "tipo": "Impostos",
+   "cat": "Impostos Extras",
+   "pag": "Débito",
+   "valor": 208.64
+  },
+  {
+   "id": "g0003",
+   "data": "2026-01-11",
+   "desc": "Uber para a loja",
+   "tipo": "Custo Variável",
+   "cat": "Logística",
+   "pag": "Débito",
+   "valor": 331.24
+  },
+  {
+   "id": "g0004",
+   "data": "2026-02-04",
+   "desc": "Taxa de entrega",
+   "tipo": "Custo Variável",
+   "cat": "Logística",
+   "pag": "Débito",
+   "valor": 360.47
+  },
+  {
+   "id": "g0005",
+   "data": "2026-02-18",
+   "desc": "Taxa de manutenção",
+   "tipo": "Impostos",
+   "cat": "Impostos Extras",
+   "pag": "Débito",
+   "valor": 189.77
+  },
+  {
+   "id": "g0006",
+   "data": "2026-02-27",
+   "desc": "Frascos de vidro",
+   "tipo": "Custo Variável",
+   "cat": "Insumos e Matérias-primas",
+   "pag": "Débito",
+   "valor": 231.51
+  },
+  {
+   "id": "g0007",
+   "data": "2026-03-02",
+   "desc": "Taxa de manutenção",
+   "tipo": "Impostos",
+   "cat": "Impostos Extras",
+   "pag": "Débito",
+   "valor": 97.46
+  },
+  {
+   "id": "g0008",
+   "data": "2026-03-09",
+   "desc": "Taxa de entrega",
+   "tipo": "Custo Variável",
+   "cat": "Logística",
+   "pag": "PIX",
+   "valor": 160.27
+  },
+  {
+   "id": "g0009",
+   "data": "2026-03-21",
+   "desc": "Celular da loja",
+   "tipo": "Despesas Adm",
+   "cat": "Fixas e Operacionais",
+   "pag": "Crédito",
+   "valor": 354.84
+  },
+  {
+   "id": "g0010",
+   "data": "2026-04-01",
+   "desc": "Taxa de manutenção",
+   "tipo": "Impostos",
+   "cat": "Impostos Extras",
+   "pag": "PIX",
+   "valor": 278.15
+  },
+  {
+   "id": "g0011",
+   "data": "2026-04-07",
+   "desc": "Internet",
+   "tipo": "Despesas Adm",
+   "cat": "Fixas e Operacionais",
+   "pag": "Débito",
+   "valor": 137.99
+  },
+  {
+   "id": "g0012",
+   "data": "2026-04-22",
+   "desc": "Taxa de entrega",
+   "tipo": "Custo Variável",
+   "cat": "Logística",
+   "pag": "Crédito",
+   "valor": 36.94
+  },
+  {
+   "id": "g0013",
+   "data": "2026-05-06",
+   "desc": "Taxa de manutenção",
+   "tipo": "Impostos",
+   "cat": "Impostos Extras",
+   "pag": "PIX",
+   "valor": 251.37
+  },
+  {
+   "id": "g0014",
+   "data": "2026-05-08",
+   "desc": "Álcool de cereais",
+   "tipo": "Custo Variável",
+   "cat": "Insumos e Matérias-primas",
+   "pag": "PIX",
+   "valor": 266.37
+  },
+  {
+   "id": "g0015",
+   "data": "2026-05-18",
+   "desc": "Aluguel da loja",
+   "tipo": "Despesas Adm",
+   "cat": "Fixas e Operacionais",
+   "pag": "PIX",
+   "valor": 90.77
+  },
+  {
+   "id": "g0016",
+   "data": "2026-06-09",
+   "desc": "Taxa de entrega",
+   "tipo": "Custo Variável",
+   "cat": "Logística",
+   "pag": "PIX",
+   "valor": 102.25
+  },
+  {
+   "id": "g0017",
+   "data": "2026-06-16",
+   "desc": "Celular da loja",
+   "tipo": "Despesas Adm",
+   "cat": "Fixas e Operacionais",
+   "pag": "Débito",
+   "valor": 163.09
+  },
+  {
+   "id": "g0018",
+   "data": "2026-06-24",
+   "desc": "Frascos de vidro",
+   "tipo": "Custo Variável",
+   "cat": "Insumos e Matérias-primas",
+   "pag": "PIX",
+   "valor": 415.48
+  },
+  {
+   "id": "g0019",
+   "data": "2026-07-02",
+   "desc": "Taxa de entrega",
+   "tipo": "Custo Variável",
+   "cat": "Logística",
+   "pag": "PIX",
+   "valor": 38.49
+  },
+  {
+   "id": "g0020",
+   "data": "2026-07-09",
+   "desc": "Internet",
+   "tipo": "Despesas Adm",
+   "cat": "Fixas e Operacionais",
+   "pag": "Crédito",
+   "valor": 357.19
+  },
+  {
+   "id": "g0021",
+   "data": "2026-07-26",
+   "desc": "Taxa de manutenção",
+   "tipo": "Impostos",
+   "cat": "Impostos Extras",
+   "pag": "Crédito",
+   "valor": 356.24
+  },
+  {
+   "id": "g0022",
+   "data": "2026-08-02",
+   "desc": "Álcool de cereais",
+   "tipo": "Custo Variável",
+   "cat": "Insumos e Matérias-primas",
+   "pag": "PIX",
+   "valor": 313.1
+  },
+  {
+   "id": "g0023",
+   "data": "2026-08-09",
+   "desc": "Taxa de manutenção",
+   "tipo": "Impostos",
+   "cat": "Impostos Extras",
+   "pag": "Crédito",
+   "valor": 115.13
+  },
+  {
+   "id": "g0024",
+   "data": "2026-08-21",
+   "desc": "Taxa de entrega",
+   "tipo": "Custo Variável",
+   "cat": "Logística",
+   "pag": "Crédito",
+   "valor": 270.4
+  },
+  {
+   "id": "g0025",
+   "data": "2026-09-18",
+   "desc": "Uber para a loja",
+   "tipo": "Custo Variável",
+   "cat": "Logística",
+   "pag": "Crédito",
+   "valor": 405.94
+  },
+  {
+   "id": "g0026",
+   "data": "2026-09-22",
+   "desc": "Internet",
+   "tipo": "Despesas Adm",
+   "cat": "Fixas e Operacionais",
+   "pag": "Crédito",
+   "valor": 100.65
+  },
+  {
+   "id": "g0027",
+   "data": "2026-09-28",
+   "desc": "Taxa de manutenção",
+   "tipo": "Impostos",
+   "cat": "Impostos Extras",
+   "pag": "Débito",
+   "valor": 71.48
+  },
+  {
+   "id": "g0028",
+   "data": "2026-10-08",
+   "desc": "Uber para a loja",
+   "tipo": "Custo Variável",
+   "cat": "Logística",
+   "pag": "Crédito",
+   "valor": 228.13
+  },
+  {
+   "id": "g0029",
+   "data": "2026-10-17",
+   "desc": "Essência para perfume",
+   "tipo": "Custo Variável",
+   "cat": "Insumos e Matérias-primas",
+   "pag": "Débito",
+   "valor": 112.4
+  },
+  {
+   "id": "g0030",
+   "data": "2026-10-28",
+   "desc": "Taxa de manutenção",
+   "tipo": "Impostos",
+   "cat": "Impostos Extras",
+   "pag": "Débito",
+   "valor": 220.55
+  }
+ ],
+ "produtos": [
+  {
+   "id": "p0001",
+   "nome": "Perfume 50ml",
+   "cat": "Perfume",
+   "preco": 120,
+   "custo": 38
+  },
+  {
+   "id": "p0002",
+   "nome": "Perfume 15ml",
+   "cat": "Perfume",
+   "preco": 45,
+   "custo": 14
+  },
+  {
+   "id": "p0003",
+   "nome": "Perfume extra (sob demanda)",
+   "cat": "Perfume extras",
+   "preco": 150,
+   "custo": 50
+  },
+  {
+   "id": "p0004",
+   "nome": "Água de lençol 200ml",
+   "cat": "Água de lençol",
+   "preco": 55,
+   "custo": 18
+  },
+  {
+   "id": "p0005",
+   "nome": "Velas aromáticas",
+   "cat": "Vela",
+   "preco": 28,
+   "custo": 9
+  }
+ ],
+ "historico": {
+  "rec": [
+   6853,
+   8544,
+   5455,
+   9483,
+   5852,
+   7191,
+   6735,
+   4412,
+   6808,
+   9379,
+   0,
+   0
+  ],
+  "desp": [
+   4832,
+   4237,
+   4012,
+   6448,
+   2758,
+   4914,
+   3112,
+   3205,
+   5306,
+   4808,
+   0,
+   0
+  ],
+  "prod": {
+   "Perfume 50ml": 38892,
+   "Perfume 15ml": 14142,
+   "Água de lençol 200ml": 7071,
+   "Velas aromáticas": 3536,
+   "Vidros variáveis": 7071
+  },
+  "pag": {
+   "PIX": 29699,
+   "Crédito": 21214,
+   "Débito": 9900,
+   "Dinheiro": 4243,
+   "Pagamento online": 5657
+  },
+  "cat": {
+   "Fixas e Operacionais": 13090,
+   "Insumos e Matérias-primas": 15271,
+   "Logística": 4363,
+   "Demais categorias": 10908
+  },
+  "frag": {
+   "Feminino": 45963,
+   "Masculino": 17678
+  }
+ },
+ "hf": {
+  "IF01": [
+   6,
+   270
+  ],
+  "IF02": [
+   8,
+   360
+  ],
+  "IF03": [
+   3,
+   360
+  ],
+  "IF05": [
+   1,
+   45
+  ],
+  "IF07": [
+   3,
+   255
+  ],
+  "IF09": [
+   8,
+   960
+  ],
+  "IF11": [
+   1,
+   85
+  ],
+  "IF13": [
+   4,
+   480
+  ],
+  "IF15": [
+   6,
+   720
+  ],
+  "IF16": [
+   2,
+   170
+  ],
+  "IF17": [
+   7,
+   315
+  ],
+  "IF19": [
+   6,
+   270
+  ],
+  "IF21": [
+   1,
+   85
+  ],
+  "IF23": [
+   1,
+   45
+  ],
+  "IF25": [
+   2,
+   170
+  ],
+  "IF27": [
+   5,
+   425
+  ],
+  "IF28": [
+   1,
+   45
+  ],
+  "IF29": [
+   4,
+   180
+  ],
+  "IF31": [
+   7,
+   840
+  ],
+  "IF35": [
+   7,
+   315
+  ],
+  "IF38": [
+   3,
+   135
+  ],
+  "IF40": [
+   4,
+   480
+  ],
+  "IF41": [
+   32,
+   1440
+  ],
+  "IF43": [
+   24,
+   1080
+  ],
+  "IF45": [
+   7,
+   840
+  ],
+  "IF49": [
+   28,
+   2380
+  ],
+  "IF51": [
+   6,
+   720
+  ],
+  "IF54": [
+   4,
+   340
+  ],
+  "IM01": [
+   15,
+   1800
+  ],
+  "IM05": [
+   16,
+   720
+  ],
+  "IM06": [
+   7,
+   840
+  ],
+  "IM09": [
+   7,
+   315
+  ],
+  "IM14": [
+   3,
+   255
+  ],
+  "IM15": [
+   6,
+   270
+  ],
+  "IM16": [
+   6,
+   270
+  ],
+  "IM20": [
+   14,
+   630
+  ],
+  "IM21": [
+   14,
+   630
+  ],
+  "IM22": [
+   18,
+   810
+  ],
+  "IM23": [
+   9,
+   765
+  ],
+  "IM30": [
+   12,
+   1020
+  ],
+  "IM35": [
+   1,
+   85
+  ],
+  "IM49": [
+   17,
+   1445
+  ]
+ }
+}
