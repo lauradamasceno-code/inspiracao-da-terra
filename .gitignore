@@ -5,3 +5,4 @@
 *.xlsx
 node_modules/
 .DS_Store
+config.js

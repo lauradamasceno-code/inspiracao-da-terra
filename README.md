@@ -1,25 +1,27 @@
 # Lemaréz Gestão
 
-Painel de gestão para a Lemaréz Perfumaria: clientes (com LGPD), vendas, custos, produtos e o catálogo de fragrâncias IF/IM, com painel de resultados e exportação em CSV.
+Painel de gestão para a Lemaréz Perfumaria: clientes (com LGPD), vendas, custos, produtos, catálogo de fragrâncias IF/IM, painel de resultados, **DRE mensal** e exportação em CSV.
 
-> **Esta versão é uma apresentação.** Todos os dados que aparecem (clientes, vendas, custos e histórico mensal) são **fictícios**. Veja a tabela abaixo.
+> **Esta versão é uma apresentação.** Todos os dados que aparecem (clientes, vendas, custos e histórico mensal, inclusive o do DRE) são **fictícios**. Veja a tabela abaixo.
 
 ## Ver a demonstração
 - **Localmente:** abra `index.html` no navegador. Não precisa instalar nada.
 - **Na web:** em *Settings > Pages* do repositório, escolha a branch `main` e a pasta `/ (root)`. O link aparece na mesma tela.
 - O botão **Restaurar dados fictícios** (no topo) volta ao estado original. O que for cadastrado na demonstração fica só no navegador de quem está usando.
 
+## Abas
+Painel, **DRE**, Vendas, Custos, Clientes, Produtos e Catálogo. A quantidade nas vendas é sempre um número inteiro.
+
 ## O que é real e o que é simulado
 
 | Parte | Estado |
 | --- | --- |
-| Interface, formulários, filtros, ranking top 10, perfume extra, CSV | **Real.** Funciona como será usado |
+| Interface, formulários, filtros, ranking top 10, DRE, perfume extra, CSV | **Real.** Funciona como será usado |
 | Catálogo de 54 femininos e 52 masculinos | **Real.** Transcrito do catálogo da Lemaréz, com os nomes como estão nele |
 | Regras de privacidade (autorização, CPF validado e oculto, exclusão do cliente) | **Real** no app |
-| Clientes, vendas, custos, histórico mensal | **Fictícios.** Gerados por `scripts/gerar_mock.py` (`data/mock-db.js`) |
+| Clientes, vendas, custos, histórico mensal e histórico do DRE | **Fictícios.** Gerados por `scripts/gerar_mock.py` (`data/mock-db.js`) |
 | Onde os dados ficam | **Simulado.** Na demonstração, só no navegador (localStorage) e sem login |
-| Banco de dados definitivo com login | **Ainda não existe.** Proposta em `supabase/schema.sql` e `docs/ARMAZENAMENTO-SEGURO.md` |
-| Versão em Google Planilhas (`apps-script/`) | **Funciona em teste simulado.** Não foi instalada numa conta Google real |
+| Banco de dados definitivo com login | **Ainda não está ligado ao app.** Guia em `docs/CRIAR-BANCO-DE-DADOS.md` e modelo em `supabase/schema.sql` (ainda não executado em projeto real) |
 | Texto de privacidade | Texto de apoio. Precisa de revisão jurídica antes do uso com clientes |
 
 ## Estrutura
@@ -28,17 +30,21 @@ Painel de gestão para a Lemaréz Perfumaria: clientes (com LGPD), vendas, custo
 index.html                 app de demonstração (usa data/mock-db.js)
 data/mock-db.js|json       banco de dados FICTÍCIO
 scripts/gerar_mock.py      gera o banco fictício
-apps-script/               versão que salva numa planilha Google (Code.gs + Index.html)
-supabase/schema.sql        proposta de banco seguro (PostgreSQL com RLS e CPF cifrado)
-docs/                      resumo para a empreendedora e guia de armazenamento seguro
+supabase/schema.sql        modelo do banco seguro (PostgreSQL com RLS e CPF cifrado)
+supabase/seed_catalogo.sql carga inicial do catálogo no banco
+docs/                      resumo para a empreendedora e guias de banco de dados
 ```
 
+## Banco de dados
+O projeto não usa Google Planilhas. O banco recomendado é o Supabase (PostgreSQL com login). O passo a passo para criá-lo está em [docs/CRIAR-BANCO-DE-DADOS.md](docs/CRIAR-BANCO-DE-DADOS.md), e a comparação com outras opções em [docs/ARMAZENAMENTO-SEGURO.md](docs/ARMAZENAMENTO-SEGURO.md).
+
 ## Regras de dados
-- **Nunca** suba dados reais de clientes para este repositório. O `.gitignore` bloqueia `.csv`, `.xlsx` e `.env`.
+- **Nunca** suba dados reais de clientes para este repositório. O `.gitignore` bloqueia `.csv`, `.xlsx`, `.env` e `config.js`.
 - O histórico financeiro real da loja não está aqui.
 
 ## Documentos
 - [Resumo para a empreendedora](docs/RESUMO-EMPREENDEDORA.md)
+- [Criar o banco de dados](docs/CRIAR-BANCO-DE-DADOS.md)
 - [Armazenamento seguro dos dados](docs/ARMAZENAMENTO-SEGURO.md)
 
 ## Equipe

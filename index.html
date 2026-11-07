@@ -76,6 +76,14 @@ dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);co
 dialog::backdrop{background:rgba(5,15,10,.55)}
 dialog h2{font-size:22px}dialog ul{padding-left:20px;margin:8px 0}dialog li{margin:5px 0}
 textarea.csv{height:240px;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;white-space:pre}
+table.dre{min-width:1020px;font-size:13px}
+.dre td{padding:7px 8px}
+.dre th:first-child,.dre td:first-child{position:sticky;left:0;background:var(--card);min-width:220px;z-index:1}
+.dre tr.t td{font-weight:700;border-top:1px solid var(--line)}
+.dre tr.s td{color:var(--mut)}.dre tr.s td:first-child{padding-left:24px}
+.dre tr.r td{font-weight:700;background:var(--bg);border-top:2px solid var(--line)}
+.dre tr.p td{color:var(--mut);font-style:italic}
+.neg{color:var(--bad)}
 .demo{background:var(--kraft);color:#2a2415;font-size:14px;padding:7px 0;text-align:center}
 #toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--hd);color:var(--hdt);padding:10px 18px;border-radius:10px;font-size:14px;z-index:30;max-width:calc(100vw - 32px)}
 @media(prefers-reduced-motion:no-preference){.bar i{transition:width .5s}}
@@ -109,19 +117,25 @@ textarea.csv{height:240px;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;wh
 </div>
 <p class="mut">Histórico fictício, só para a apresentação. As vendas e os custos lançados aqui entram por cima desses números.</p>
 </section>
+<section id="dre" hidden>
+<div class="tools"><select id="dreAno" aria-label="Ano" style="width:auto"></select><button class="btn s" type="button" id="dreCsv">Baixar CSV</button></div>
+<div class="grid k3" id="dreKpis"></div>
+<div class="card scroll" style="margin-top:14px" id="dreTab"></div>
+<p class="mut" id="dreNote">Histórico fictício, agrupado por forma de pagamento. A receita lançada aqui também entra por forma de pagamento, porque o canal de venda não é mais cadastrado. Despesas com pessoal e materiais de consumo aparecem só no histórico.</p>
+</section>
 </div></main>
 
 <datalist id="dlProd"></datalist>
 <dialog id="dlgAsk"><h2>Confirmar</h2><p id="askMsg"></p><div class="acts"><button class="btn d" id="askOk" type="button">Confirmar</button><button class="btn s" id="askNo" type="button">Cancelar</button></div></dialog>
-<dialog id="dlgCsv"><h2 id="csvTit">CSV</h2><p class="mut">Se o download não começar, toque em Copiar e cole numa planilha. O arquivo usa ponto e vírgula e abre direto no Excel e no Google Planilhas.</p><textarea class="csv" id="csvTxt" readonly aria-label="Conteúdo do CSV"></textarea><div class="acts" style="margin-top:12px"><button class="btn" id="csvDl" type="button">Baixar arquivo</button><button class="btn s" id="csvCp" type="button">Copiar</button><button class="btn s" id="csvX" type="button">Fechar</button></div></dialog>
+<dialog id="dlgCsv"><h2 id="csvTit">CSV</h2><p class="mut">Se o download não começar, toque em Copiar e cole numa planilha. O arquivo usa ponto e vírgula e abre direto no Excel.</p><textarea class="csv" id="csvTxt" readonly aria-label="Conteúdo do CSV"></textarea><div class="acts" style="margin-top:12px"><button class="btn" id="csvDl" type="button">Baixar arquivo</button><button class="btn s" id="csvCp" type="button">Copiar</button><button class="btn s" id="csvX" type="button">Fechar</button></div></dialog>
 <dialog id="dlgPriv"><h2>Privacidade dos clientes (LGPD)</h2>
 <ul>
 <li><b>Dados guardados:</b> nome, telefone, e-mail, endereço, data de nascimento e CPF. Só nome e telefone são obrigatórios.</li>
 <li><b>Para que servem:</b> atender o cliente, avisar sobre pedidos e novidades e enviar parabéns. Só cadastre quem autorizou, e marque isso no cadastro.</li>
-<li><b>Onde ficam:</b> numa planilha do Google da Lemaréz. Só a conta da dona da planilha abre este app. Os dados não vão para outras empresas.</li>
+<li><b>Onde ficam:</b> neste navegador, na demonstração. No uso real, ficam num banco de dados da Lemaréz, com login só para a dona da loja. Os dados não vão para outras empresas.</li>
 <li><b>CPF:</b> peça só quando precisar, por exemplo para nota fiscal. Na tela ele aparece parcialmente oculto.</li>
 <li><b>Direitos do cliente:</b> ele pode pedir para ver, corrigir, receber uma cópia ou apagar seus dados, e retirar a autorização. Use os botões <i>Editar</i>, <i>Dados</i> e <i>Excluir</i> na aba Clientes. Responda ao pedido em até 15 dias.</li>
-<li><b>Cuidados:</b> não compartilhe a planilha, ative a verificação em duas etapas na conta Google, baixe o CSV com CPF só se for preciso e apague o arquivo depois.</li>
+<li><b>Cuidados:</b> use senha forte e verificação em duas etapas no acesso ao banco de dados, baixe o CSV com CPF só se for preciso e apague o arquivo depois.</li>
 <li><b>Revisão:</b> uma vez por ano, exclua cadastros de quem não compra mais.</li>
 </ul>
 <p class="mut">Texto de apoio para o dia a dia. Para os termos oficiais de privacidade da loja, vale uma revisão de um profissional jurídico.</p>
@@ -130,7 +144,6 @@ textarea.csv{height:240px;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;wh
 
 <script src="data/mock-db.js"></script>
 <script>
-const IS_GAS=typeof google!=="undefined"&&!!google.script&&!!google.script.run;
 const MESES=["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
 const PAGS=["PIX","Crédito","Débito","Dinheiro","Pagamento online","PIX (Maquininha)"];
 const CATR=["Receita Operacional Bruta","Deduções da Receita Bruta"];
@@ -264,13 +277,11 @@ const telFmt=s=>{const d=(s||"").replace(/\D/g,"");return d.length===11?`(${d.sl
 
 let S={clientes:[],vendas:[],custos:[],produtos:[],catalogo:[]};
 function norm(d){TABS.forEach(t=>{S[t]=((d&&d[t])||[]).map(r=>{(NUM[t]||[]).forEach(k=>{r[k]=(r[k]===""||r[k]==null)?"":Number(String(r[k]).replace(",","."))});return r})})}
-const gas=(fn,...a)=>new Promise((ok,er)=>google.script.run.withSuccessHandler(ok).withFailureHandler(er)[fn](...a));
 const LS="lemarez_demo_v1";
 const pers=async()=>{try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}};
-const B=IS_GAS?{load:()=>gas("api_load"),save:(t,o)=>gas("api_save",t,o),many:(t,r)=>gas("api_saveMany",t,r),del:(t,id)=>gas("api_delete",t,id),delc:id=>gas("api_delCliente",id)}
-:{load:async()=>{let d=null;try{d=JSON.parse(localStorage.getItem(LS)||"null")}catch(e){}if(!d&&window.MOCK_DB)d=JSON.parse(JSON.stringify(window.MOCK_DB));return d||{}},save:pers,many:pers,del:pers,delc:pers};
+const B={load:async()=>{let d=null;try{d=JSON.parse(localStorage.getItem(LS)||"null")}catch(e){}if(!d&&window.MOCK_DB)d=JSON.parse(JSON.stringify(window.MOCK_DB));return d||{}},save:pers,many:pers,del:pers,delc:pers};
 
-function setStatus(s){const el=$("#status");el.className="pill"+(s==="err"?" err":"");el.textContent=s==="saving"?"Salvando…":s==="err"?"Erro ao salvar":IS_GAS?"Salvo na planilha do Google":"Demonstração · dados fictícios"}
+function setStatus(s){const el=$("#status");el.className="pill"+(s==="err"?" err":"");el.textContent=s==="saving"?"Salvando…":s==="err"?"Erro ao salvar":"Demonstração · dados fictícios"}
 let tt;function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,3800)}
 async function commit(fn){setStatus("saving");try{await fn();setStatus("ok")}catch(e){setStatus("err");toast("Não foi possível salvar. "+(e&&e.message?e.message:"Confira a conexão e tente de novo."));try{norm(await B.load())}catch(_){}}refresh()}
 function ask(msg,ok,no){return new Promise(res=>{const d=$("#dlgAsk");$("#askMsg").textContent=msg;$("#askOk").textContent=ok||"Confirmar";$("#askNo").textContent=no||"Cancelar";const done=v=>{d.close();res(v)};$("#askOk").onclick=()=>done(true);$("#askNo").onclick=()=>done(false);d.oncancel=()=>res(false);d.showModal()})}
@@ -302,13 +313,13 @@ const byData=(a,b)=>b.data.localeCompare(a.data);
 
 const E={
 vendas:{tab:"Vendas",novo:"Nova venda",editar:"Editar venda",file:"vendas.csv",sort:byData,
- campos:[{k:"data",l:"Data",t:"date",req:1,def:hoje},{k:"desc",l:"Descrição",t:"text",req:1,ph:"Ex.: IF 43, cliente do WhatsApp"},{k:"cliente",l:"Cliente (opcional)",t:"select",o:selCli},{k:"tipo",l:"Tipo",t:"select",o:["Receita"],req:1},{k:"cat",l:"Categoria",t:"select",o:CATR,req:1},{k:"produto",l:"Produto vendido",t:"text",req:1,list:"dlProd",ph:"Escreva o produto"},{k:"frag",l:"Fragrância do catálogo",t:"select",o:selFrag},{k:"extra",l:"Nome do perfume extra",t:"text",ph:"Perfume pedido sob demanda"},{k:"qtd",l:"Quantidade",t:"number",req:1,def:1},{k:"pag",l:"Forma de pagamento",t:"select",o:PAGS,req:1},{k:"valor",l:"Valor (R$)",t:"number",req:1}],
+ campos:[{k:"data",l:"Data",t:"date",req:1,def:hoje},{k:"desc",l:"Descrição",t:"text",req:1,ph:"Ex.: IF 43, cliente do WhatsApp"},{k:"cliente",l:"Cliente (opcional)",t:"select",o:selCli},{k:"tipo",l:"Tipo",t:"select",o:["Receita"],req:1},{k:"cat",l:"Categoria",t:"select",o:CATR,req:1},{k:"produto",l:"Produto vendido",t:"text",req:1,list:"dlProd",ph:"Escreva o produto"},{k:"frag",l:"Fragrância do catálogo",t:"select",o:selFrag},{k:"extra",l:"Nome do perfume extra",t:"text",ph:"Perfume pedido sob demanda"},{k:"qtd",l:"Quantidade",t:"number",req:1,def:1,int:1,hint:"Número inteiro."},{k:"pag",l:"Forma de pagamento",t:"select",o:PAGS,req:1},{k:"valor",l:"Valor (R$)",t:"number",req:1}],
  filtros:[Fq(["desc","produto","extra"]),Fm,{id:"k",lab:"Todos os clientes",o:()=>selCli().slice(1),t:eq("cliente")},{id:"g",lab:"Todas as fragrâncias",o:[["Feminino","Feminino (IF)"],["Masculino","Masculino (IM)"],["Extra","Perfume extra"]],t:(r,v)=>fgen(fcode(r))===v},{id:"f",lab:"Fragrância específica",o:selFragF,t:(r,v)=>fcode(r)===v},{id:"c",lab:"Todas as categorias",o:CATR,t:eq("cat")},{id:"p",lab:"Todos os pagamentos",o:PAGS,t:eq("pag")}],
  cols:[["Data",r=>dt(r.data)],["Descrição",r=>{const c=fcode(r);return esc(r.desc)+(c==="EXTRA"?`<br><span class="tag k">Extra: ${esc(r.extra)}</span>`:c?`<br><span class="tag g">${esc(cname(c))}</span>`:"")}],["Cliente",r=>cli(r.cliente)?esc(cli(r.cliente).nome):'<span class="mut">—</span>'],["Produto",r=>esc(r.produto)],["Qtd",r=>r.qtd,1],["Categoria",r=>esc(r.cat)],["Pagamento",r=>esc(r.pag)],["Valor",r=>R2(r.valor),1]],
  csv:[["Data",r=>r.data],["Descrição",r=>r.desc],["Tipo",r=>r.tipo],["Categoria",r=>r.cat],["Produto vendido",r=>r.produto],["Fragrância",r=>fcode(r)==="EXTRA"?"Perfume extra":fcode(r)?cname(fcode(r)):""],["Perfume extra",r=>r.extra],["Cliente",r=>cli(r.cliente)?cli(r.cliente).nome:""],["Quantidade",r=>r.qtd],["Forma de pagamento",r=>r.pag],["Valor",r=>r.valor]],
  res:L=>{const t=L.reduce((a,r)=>a+(+r.valor||0),0);return `${L.length} vendas · ${R2(t)}`+(L.length?` · ticket médio ${R2(t/L.length)}`:"")},
  onform(fm){const sync=()=>{const on=fm.elements.frag.value==="EXTRA";fm.querySelector('[data-f="extra"]').hidden=!on;fm.elements.extra.required=on};sync();fm.oninput=ev=>{const n=ev.target.name;if(n==="frag")sync();if(n==="valor")delete ev.target.dataset.auto;if(n==="produto"||n==="qtd"){const p=S.produtos.find(x=>nz(x.nome)===nz(fm.elements.produto.value));const vl=fm.elements.valor;if(p&&p.preco!==""&&(vl.value===""||vl.dataset.auto)){vl.value=(p.preco*(+fm.elements.qtd.value||0)).toFixed(2);vl.dataset.auto="1"}}}},
- prep(o){if(!(o.qtd>0))return "A quantidade precisa ser maior que zero.";if(o.frag!=="EXTRA")o.extra="";else if(!o.extra)return "Informe o nome do perfume extra.";o.tipo="Receita"}},
+ prep(o){if(!Number.isInteger(o.qtd)||o.qtd<1)return "A quantidade precisa ser um número inteiro, como 1 ou 2.";if(o.frag!=="EXTRA")o.extra="";else if(!o.extra)return "Informe o nome do perfume extra.";o.tipo="Receita"}},
 custos:{tab:"Custos",novo:"Novo gasto",editar:"Editar gasto",file:"custos.csv",sort:byData,
  campos:[{k:"data",l:"Data",t:"date",req:1,def:hoje},{k:"desc",l:"Descrição",t:"text",req:1},{k:"tipo",l:"Tipo",t:"select",o:TIPOC,req:1},{k:"cat",l:"Categoria",t:"select",o:CATC,req:1},{k:"pag",l:"Forma de pagamento",t:"select",o:PAGS,req:1},{k:"valor",l:"Valor (R$)",t:"number",req:1}],
  filtros:[Fq(["desc"]),Fm,{id:"t",lab:"Todos os tipos",o:TIPOC,t:eq("tipo")},{id:"c",lab:"Todas as categorias",o:CATC,t:eq("cat")},{id:"p",lab:"Todos os pagamentos",o:PAGS,t:eq("pag")}],
@@ -346,7 +357,7 @@ function lista(k){const s=$("#"+k),e=E[k];e.filtros.forEach(f=>{if(typeof f.o===
 function campo(c,rec){if(c.t==="check")return `<label class="chk"><input type="checkbox" name="${c.k}" ${rec&&rec.consentimento?"checked":""} ${c.req?"required":""}><span>${c.l}${rec&&rec.consentimento?` <span class="mut">Autorizado em ${dt(rec.consentimento)}.</span>`:""}</span></label>`;
  let val=rec?rec[c.k]:(c.def!=null?(typeof c.def==="function"?c.def():c.def):"");if(val==null)val="";if(c.k==="cpf"&&val)val=val;
  let h;if(c.t==="select"){const a=typeof c.o==="function"?c.o():c.o;h=`<select name="${c.k}" id="f-${c.k}" ${c.req?"required":""}>${a.map(x=>{const p=Array.isArray(x)?x:[x,x];return `<option value="${esc(p[0])}"${String(p[0])===String(val)?" selected":""}>${esc(p[1])}</option>`}).join("")}</select>`}
- else h=`<input name="${c.k}" id="f-${c.k}" type="${c.t}" ${c.t==="number"?'step="0.01" min="0"':""} ${c.req?"required":""} ${c.ph?`placeholder="${esc(c.ph)}"`:""} ${c.list?`list="${c.list}"`:""} ${c.max?`maxlength="${c.max}"`:""} ${c.ac?`autocomplete="${c.ac}"`:""} ${c.ro&&rec?"readonly":""} value="${esc(val)}">`;
+ else h=`<input name="${c.k}" id="f-${c.k}" type="${c.t}" ${c.t==="number"?(c.int?'step="1" min="1" inputmode="numeric"':'step="0.01" min="0"'):""} ${c.req?"required":""} ${c.ph?`placeholder="${esc(c.ph)}"`:""} ${c.list?`list="${c.list}"`:""} ${c.max?`maxlength="${c.max}"`:""} ${c.ac?`autocomplete="${c.ac}"`:""} ${c.ro&&rec?"readonly":""} value="${esc(val)}">`;
  return `<label data-f="${c.k}">${c.l}${h}${c.hint?`<small class="mut">${c.hint}</small>`:""}</label>`}
 function abrir(k,rec){const e=E[k],fm=$("#"+k+" form");fm.dataset.id=rec?rec.id:"";fm.innerHTML=`<h2>${rec?e.editar:e.novo}</h2><div class="f2">${e.campos.map(c=>campo(c,rec)).join("")}</div><div class="acts"><button class="btn" type="submit">Salvar</button><button class="btn s" type="button" data-a="cancel">Cancelar</button></div>`;fm.hidden=false;fm.oninput=null;e.onform&&e.onform(fm);fm.scrollIntoView({block:"nearest"});const f=fm.querySelector("input:not([readonly]),select");f&&f.focus()}
 async function remover(k,id){const r=S[k].find(x=>x.id===id);if(!r)return;const msg=k==="clientes"?`Excluir ${r.nome}? Os dados pessoais saem da planilha e as vendas dele ficam sem cliente. Isso não pode ser desfeito.`:"Excluir este registro? Isso não pode ser desfeito.";if(!await ask(msg,"Excluir"))return;S[k]=S[k].filter(x=>x.id!==id);if(k==="clientes")S.vendas.forEach(v=>{if(v.cliente===id)v.cliente=""});await commit(()=>k==="clientes"?B.delc(id):B.del(k,id));toast("Registro excluído.")}
@@ -378,7 +389,43 @@ function painel(){
  $("#extras").innerHTML=nx?`<div class="big">${nx}</div><p class="mut" style="margin:0 0 10px">pedidos fora do catálogo, somando ${R(vx)}</p>`+Object.entries(X).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([n,v])=>`<div class="row" style="grid-template-columns:1fr auto"><span>${esc(n)}</span><span class="v mut">${R(v)}</span></div>`).join(""):`<p class="mut" style="margin:0">Quando você lançar uma venda com “Perfume extra”, os pedidos aparecem aqui com o nome de cada perfume.</p>`;
  barras("#bFrag",Q,"var(--gold)");barras("#bProd",P);barras("#bPag",G,"var(--gold)");barras("#bCat",K,"var(--gold)");barras("#bCli",T,"var(--ac)","Aparece aqui quando você lançar vendas com cliente.");
  $("#dlProd").innerHTML=S.produtos.map(p=>`<option value="${esc(p.nome)}">`).join("")}
-function refresh(){KEYS.forEach(lista);painel()}
+
+/* DRE */
+const HY=2026,GR=["rb","ded","cv","pes","adm","imp"];
+function dreCalc(ano){const G={};GR.forEach(g=>G[g]={});const D=H.dre||{};
+ const add=(g,k,m,v)=>{(G[g][k]=G[g][k]||Array(12).fill(0))[m]+=v};
+ if(ano===HY)GR.forEach(g=>Object.keys(D[g]||{}).forEach(k=>D[g][k].forEach((v,m)=>add(g,k,m,v))));
+ S.vendas.forEach(v=>{if(+v.data.slice(0,4)!==ano)return;const x=+v.valor||0,m=mes(v.data);if(v.cat===CATR[1])add("ded","Deduções lançadas",m,x);else add("rb",v.pag,m,x)});
+ S.custos.forEach(c=>{if(+c.data.slice(0,4)!==ano)return;const x=+c.valor||0,m=mes(c.data);add(c.tipo==="Custo Variável"?"cv":c.tipo==="Despesas Adm"?"adm":"imp",c.cat,m,x)});
+ return G}
+const sm=g=>{const t=Array(12).fill(0);Object.values(g).forEach(a=>a.forEach((v,i)=>t[i]+=v));return t};
+const dif=(a,b)=>a.map((v,i)=>v-b[i]),som=(a,b)=>a.map((v,i)=>v+b[i]),tot=a=>a.reduce((x,y)=>x+y,0);
+function dreRows(G){
+ const rb=sm(G.rb),ded=sm(G.ded),rl=dif(rb,ded),cv=sm(G.cv),lb=dif(rl,cv),pes=sm(G.pes),adm=sm(G.adm),eb=dif(lb,som(pes,adm)),imp=sm(G.imp),rn=dif(eb,imp);
+ const out=[],sg=(k,v)=>k<0?v.map(x=>-x):v;
+ const T=(label,arr,k,kind)=>out.push({label,vals:sg(k,arr),kind});
+ const SB=(g,k,pref)=>Object.entries(g).filter(x=>tot(x[1])!==0).sort((a,b)=>tot(b[1])-tot(a[1])).forEach(x=>out.push({label:(pref||"")+x[0],vals:sg(k,x[1]),kind:"s"}));
+ T("Receita Operacional Bruta",rb,1,"t");SB(G.rb,1);
+ T("Deduções da Receita Bruta",ded,-1,"t");SB(G.ded,-1);
+ T("Receita Líquida",rl,1,"r");
+ T("Custo Variável / CPV",cv,-1,"t");SB(G.cv,-1);
+ T("Lucro Bruto",lb,1,"r");
+ T("Despesas Operacionais",som(pes,adm),-1,"t");SB(G.adm,-1);SB(G.pes,-1,"Pessoal · ");
+ T("EBITDA",eb,1,"r");
+ T("Impostos adicionais (extras)",imp,-1,"t");SB(G.imp,-1);
+ T("Resultado Líquido",rn,1,"r");
+ out.push({label:"Margem líquida",vals:rn.map((v,i)=>rl[i]?v/rl[i]*100:null),kind:"p",total:tot(rl)?tot(rn)/tot(rl)*100:null});
+ return {out,rl,lb,eb,rn}}
+const fv=v=>v==null?"":v===0?"–":(v<0?"−":"")+R(Math.abs(v));
+const fp=x=>x==null?"–":x.toFixed(1).replace(".",",").replace("-","−")+"%";
+let DRE_OUT=[];
+function dre(){const sel=$("#dreAno");const anos=new Set([HY,new Date().getFullYear()]);S.vendas.concat(S.custos).forEach(r=>{if(r.data)anos.add(+r.data.slice(0,4))});
+ const cur=sel.value||String(HY);sel.innerHTML=[...anos].sort((a,b)=>b-a).map(a=>`<option>${a}</option>`).join("");sel.value=anos.has(+cur)?cur:String(HY);
+ const r=dreRows(dreCalc(+sel.value));DRE_OUT=r.out;const rlT=tot(r.rl),pc=v=>rlT?Math.round(v/rlT*100)+"% da receita líquida":"";
+ $("#dreKpis").innerHTML=[["Receita líquida",rlT,""],["Lucro bruto",tot(r.lb),pc(tot(r.lb))],["EBITDA",tot(r.eb),pc(tot(r.eb))],["Resultado líquido",tot(r.rn),pc(tot(r.rn))]].map(x=>`<div class="card"><div class="mut">${x[0]}</div><div class="big${x[1]<0?" neg":""}">${fv(x[1])}</div>${x[2]?`<div class="mut">${x[2]}</div>`:""}</div>`).join("");
+ $("#dreTab").innerHTML=`<table class="dre"><thead><tr><th>Conta</th>${MESES.map(m=>`<th class="n">${m}</th>`).join("")}<th class="n">Total</th></tr></thead><tbody>${r.out.map(l=>{const p=l.kind==="p",f=p?fp:fv,t=p?l.total:tot(l.vals),ng=v=>l.kind==="r"&&v<0?" neg":"";return `<tr class="${l.kind}"><td>${esc(l.label)}</td>${l.vals.map(v=>`<td class="n${ng(v)}">${f(v)}</td>`).join("")}<td class="n${ng(t)}">${f(t)}</td></tr>`}).join("")}</tbody></table>`}
+function dreCsv(){const rd=x=>x==null?"":Math.round(x*100)/100;const cols=[["Conta",l=>l.label]].concat(MESES.map((m,i)=>[m,l=>rd(l.vals[i])])).concat([["Total",l=>l.kind==="p"?rd(l.total):rd(tot(l.vals))]]);mostrarCsv("dre-"+$("#dreAno").value+".csv",toCsv(cols,DRE_OUT))}
+function refresh(){KEYS.forEach(lista);painel();dre()}
 
 async function exemplos(){const c=[{id:uid(),nome:"Ana Exemplo",cpf:"",endereco:"Rua das Flores, 10",email:"ana@exemplo.com",telefone:"11999990001",nascimento:"1990-"+String(new Date().getMonth()+1).padStart(2,"0")+"-15",consentimento:hoje(),criado:hoje()},{id:uid(),nome:"Bruno Exemplo",cpf:"",endereco:"",email:"",telefone:"11999990002",nascimento:"1985-03-02",consentimento:hoje(),criado:hoje()}];
  const d=n=>{const x=new Date();x.setDate(x.getDate()-n);return new Date(x-x.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
@@ -391,12 +438,13 @@ async function init(){
  try{if(!S.catalogo.length){S.catalogo=CAT_RAW.split("\n").map(l=>{const p=l.split("|");return{id:p[0],codigo:p[0],nome:p.slice(1,-1).join("|"),marca:p[p.length-1],genero:p[0].startsWith("IF")?"Feminino":"Masculino"}});await B.many("catalogo",S.catalogo)}
  if(!S.produtos.length){S.produtos=SEED_PROD.map(p=>({id:uid(),nome:p[0],cat:p[1],preco:p[2],custo:""}));await B.many("produtos",S.produtos)}}catch(e){toast("Não foi possível gravar o catálogo inicial.")}
  KEYS.forEach(montar);
- const TB=[["painel","Painel"],...KEYS.map(k=>[k,E[k].tab])];
+ const TB=[["painel","Painel"],["dre","DRE"],...KEYS.map(k=>[k,E[k].tab])];
  $("#nav").innerHTML=TB.map((t,i)=>`<button type="button" role="tab" data-t="${t[0]}" aria-selected="${i===0}">${t[1]}</button>`).join("");
  $("#nav").onclick=ev=>{const t=ev.target.dataset.t;if(!t)return;document.querySelectorAll("#nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===t));TB.forEach(x=>$("#"+x[0]).hidden=x[0]!==t);if(location.hash!=="#"+t)try{history.replaceState(null,"","#"+t)}catch(e){}};
  document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{topMode=b.dataset.m;document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));painel()});
+ $("#dreAno").onchange=dre;$("#dreCsv").onclick=dreCsv;
  $("#privBtn").onclick=()=>$("#dlgPriv").showModal();$("#privX").onclick=()=>$("#dlgPriv").close();
- if(!IS_GAS){const b=document.createElement("button");b.className="link";b.type="button";b.textContent="Restaurar dados fictícios";b.onclick=async()=>{if(!await ask("Voltar aos dados fictícios originais? O que foi cadastrado nesta demonstração será apagado.","Restaurar"))return;const keep=S.catalogo;norm(JSON.parse(JSON.stringify(window.MOCK_DB)));S.catalogo=keep;await pers();refresh();toast("Dados fictícios restaurados.")};$(".st").prepend(b)}
+ {const b=document.createElement("button");b.className="link";b.type="button";b.textContent="Restaurar dados fictícios";b.onclick=async()=>{if(!await ask("Voltar aos dados fictícios originais? O que foi cadastrado nesta demonstração será apagado.","Restaurar"))return;const keep=S.catalogo;norm(JSON.parse(JSON.stringify(window.MOCK_DB)));S.catalogo=keep;await pers();refresh();toast("Dados fictícios restaurados.")};$(".st").prepend(b)}
  setStatus("ok");refresh();
  const h=location.hash.slice(1);if(TB.some(x=>x[0]===h)){const b=document.querySelector(`#nav [data-t="${h}"]`);b&&b.click()}}
 init();

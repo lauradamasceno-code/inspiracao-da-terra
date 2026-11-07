@@ -78,6 +78,16 @@ hist={"rec":rec,"desp":desp,
  "pag":{"PIX":round(tot*.42),"Crédito":round(tot*.3),"Débito":round(tot*.14),"Dinheiro":round(tot*.06),"Pagamento online":round(tot*.08)},
  "cat":{"Fixas e Operacionais":round(sum(desp)*.3),"Insumos e Matérias-primas":round(sum(desp)*.35),"Logística":round(sum(desp)*.1),"Demais categorias":round(sum(desp)*.25)},
  "frag":{"Feminino":round(tot*.65),"Masculino":round(tot*.25)}}
+# DRE fictício por mês, coerente com rec/desp acima
+shares={"PIX":.42,"Crédito":.3,"Débito":.14,"Dinheiro":.06,"Pagamento online":.08}
+dre={"rb":{k:[round(r*v,2) for r in rec] for k,v in shares.items()},
+     "ded":{"Desconto concedido":[round(r*.04,2) for r in rec]}}
+rest=[d-round(r*.04,2) for d,r in zip(desp,rec)]
+dre["cv"]={"Insumos e Matérias-primas":[round(x*.30,2) for x in rest],"Materiais de consumo":[round(x*.1,2) for x in rest],"Logística":[round(x*.05,2) for x in rest]}
+dre["adm"]={"Fixas e Operacionais":[round(x*.35,2) for x in rest]}
+dre["pes"]={"Sócios":[round(x*.2,2) for x in rest]}
+dre["imp"]={}
+hist["dre"]=dre
 hf={}
 for n in sorted(set(fem)|set(range(1,30,2))):
     q=random.randint(1,40) if n in fem[:6] else random.randint(1,8); hf[f"IF{n:02d}"]=[q,q*random.choice([45,85,120])]
