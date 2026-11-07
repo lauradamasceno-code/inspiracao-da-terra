@@ -12,11 +12,13 @@ Painel de gestão para a Lemaréz Perfumaria: clientes (com LGPD), vendas, custo
 ## Abas
 Painel, **DRE**, Vendas, Custos, Clientes, Produtos e Catálogo. A quantidade nas vendas é sempre um número inteiro.
 
+Na aba Catálogo, o botão **Gerar catálogo em PDF** monta um catálogo com o kit de marca (capa, linha feminina IF e linha masculina IM) a partir das fragrâncias cadastradas. Ele usa a impressão do navegador: na janela que abre, escolha *Salvar como PDF*. Se ela adicionar ou editar uma fragrância, o próximo PDF já sai atualizado.
+
 ## O que é real e o que é simulado
 
 | Parte | Estado |
 | --- | --- |
-| Interface, formulários, filtros, ranking top 10, DRE, perfume extra, CSV | **Real.** Funciona como será usado |
+| Interface, formulários, filtros, ranking top 10, DRE, catálogo em PDF, perfume extra, CSV | **Real.** Funciona como será usado |
 | Catálogo de 54 femininos e 52 masculinos | **Real.** Transcrito do catálogo da Lemaréz, com os nomes como estão nele |
 | Regras de privacidade (autorização, CPF validado e oculto, exclusão do cliente) | **Real** no app |
 | Clientes, vendas, custos, histórico mensal e histórico do DRE | **Fictícios.** Gerados por `scripts/gerar_mock.py` (`data/mock-db.js`) |

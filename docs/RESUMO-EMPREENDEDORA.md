@@ -9,13 +9,14 @@ O Lemaréz Gestão é um painel para cadastrar clientes, vendas e custos e ver c
 - Filtrar por cliente, mês, fragrância, categoria e forma de pagamento.
 - Ver no painel o top 10 de perfumes, o saldo e os clientes que mais compram.
 - Ver o DRE do ano, mês a mês, no mesmo formato da planilha financeira.
+- Gerar, quando quiser, um catálogo em PDF com a identidade visual da Lemaréz, sempre com as fragrâncias atuais.
 - Baixar as listas e o DRE em CSV.
 
 ## O que é de verdade e o que é simulado
 
 | | O que é |
 | --- | --- |
-| Funciona de verdade | A tela, os formulários, os filtros, o ranking, o DRE, o catálogo de 54 femininos e 52 masculinos, o CSV, o perfume extra e as regras de privacidade (autorização, CPF validado e oculto, exclusão do cliente). |
+| Funciona de verdade | A tela, os formulários, os filtros, o ranking, o DRE, o catálogo em PDF, o catálogo de 54 femininos e 52 masculinos, o CSV, o perfume extra e as regras de privacidade (autorização, CPF validado e oculto, exclusão do cliente). |
 | Simulado na apresentação | Os clientes, as vendas, os custos e o histórico mensal (inclusive o do DRE) são fictícios. Os dados ficam só no navegador de quem apresenta e não há login. |
 | Ainda não existe | O banco de dados definitivo com login, a importação das vendas reais da planilha financeira, o backup automático e o texto de privacidade revisado por um profissional jurídico. |
 

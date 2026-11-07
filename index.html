@@ -87,6 +87,43 @@ table.dre{min-width:1020px;font-size:13px}
 .demo{background:var(--kraft);color:#2a2415;font-size:14px;padding:7px 0;text-align:center}
 #toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--hd);color:var(--hdt);padding:10px 18px;border-radius:10px;font-size:14px;z-index:30;max-width:calc(100vw - 32px)}
 @media(prefers-reduced-motion:no-preference){.bar i{transition:width .5s}}
+
+#catPrint{position:fixed;inset:0;z-index:60;background:#cfd2c8;overflow:auto;font-family:var(--body);color:#15251d}
+#catPrint[hidden]{display:none}
+body.pc{overflow:hidden}
+.cpbar{position:sticky;top:0;z-index:2;background:#0b2a1f;color:#f2ecd9;padding:10px 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.cpbar select{font:inherit;padding:8px;border-radius:8px;border:1px solid #6b7f72;background:#fff;color:#15251d}
+.cpbar label{display:flex;gap:6px;align-items:center}
+.cpbar .btn{background:#d6ae58;color:#06100b;border-color:#d6ae58}
+.cpbar .btn.s{background:transparent;color:#f2ecd9;border-color:#f2ecd9}
+.cpbar small{flex-basis:100%;opacity:.8}
+.cppg{width:210mm;max-width:calc(100% - 24px);margin:14px auto;background:#fff;box-sizing:border-box;padding:14mm}
+.cpcover{min-height:268mm;background:#0b2a1f;color:#f2ecd9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cpcover img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid #d6ae58}
+.cpcover h1{font:600 64px/1 var(--head);margin:22px 0 4px;letter-spacing:.04em}
+.cpcover .cpk{font:600 14px var(--body);letter-spacing:.4em;text-transform:uppercase;color:#d6ae58;margin:0}
+.cpcover .cpl{width:70px;height:2px;background:#d6ae58;margin:34px 0}
+.cpcover h2{font:500 34px var(--head);margin:0 0 8px}
+.cpcover p{margin:0}
+.cphead{background:#0b2a1f;color:#f2ecd9;padding:14px 18px;border-bottom:3px solid #b0802c;margin-bottom:10px}
+.cphead h2{font:600 30px var(--head);margin:0}
+.cphead span{color:#d6ae58;font-size:13px}
+.cpcols{columns:2;column-gap:10mm}
+.cpit{display:flex;gap:10px;align-items:baseline;padding:6px 0;border-bottom:1px solid #d3d9cd;break-inside:avoid}
+.cpc{font:700 17px var(--head);color:#84600f;min-width:42px}
+.cpn{font-weight:700;font-size:13px}
+.cpm{color:#586a5f;font-size:11.5px}
+@media print{
+ @page{size:A4;margin:14mm}
+ body.pc>*:not(#catPrint){display:none!important}
+ body.pc{overflow:visible;background:#fff}
+ #catPrint{position:static;overflow:visible;background:#fff}
+ .cpbar{display:none}
+ .cppg{width:auto;max-width:none;margin:0;padding:0;break-after:page}
+ .cppg:last-child{break-after:auto}
+ .cpcover{height:268mm;min-height:0}
+ .cpcover,.cphead{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 </style>
 </head>
 <body>
@@ -126,6 +163,7 @@ table.dre{min-width:1020px;font-size:13px}
 </div></main>
 
 <datalist id="dlProd"></datalist>
+<div id="catPrint" hidden><div class="cpbar"><b>Catálogo em PDF</b><select id="cpGen" aria-label="Linha"><option value="">Feminino e masculino</option><option value="Feminino">Só feminino (IF)</option><option value="Masculino">Só masculino (IM)</option></select><label><input type="checkbox" id="cpMarca" checked> Mostrar a marca</label><button class="btn" id="cpGo" type="button">Salvar como PDF</button><button class="btn s" id="cpX" type="button">Fechar</button><small>Na janela de impressão, escolha “Salvar como PDF” como destino. O catálogo usa as fragrâncias da aba Catálogo, então está sempre atualizado.</small></div><div id="cpBody"></div></div>
 <dialog id="dlgAsk"><h2>Confirmar</h2><p id="askMsg"></p><div class="acts"><button class="btn d" id="askOk" type="button">Confirmar</button><button class="btn s" id="askNo" type="button">Cancelar</button></div></dialog>
 <dialog id="dlgCsv"><h2 id="csvTit">CSV</h2><p class="mut">Se o download não começar, toque em Copiar e cole numa planilha. O arquivo usa ponto e vírgula e abre direto no Excel.</p><textarea class="csv" id="csvTxt" readonly aria-label="Conteúdo do CSV"></textarea><div class="acts" style="margin-top:12px"><button class="btn" id="csvDl" type="button">Baixar arquivo</button><button class="btn s" id="csvCp" type="button">Copiar</button><button class="btn s" id="csvX" type="button">Fechar</button></div></dialog>
 <dialog id="dlgPriv"><h2>Privacidade dos clientes (LGPD)</h2>
@@ -364,10 +402,10 @@ async function remover(k,id){const r=S[k].find(x=>x.id===id);if(!r)return;const 
 async function baixar(k){const e=E[k];if(k==="clientes"){const full=S.clientes.some(c=>c.cpf)&&await ask("Incluir o CPF completo no arquivo? Ele contém dado pessoal sensível. Apague o arquivo depois de usar.","Incluir CPF completo","Ocultar CPF");const cols=[["Nome",r=>r.nome],["CPF",r=>full?r.cpf:cpfMask(r.cpf)],["Endereço",r=>r.endereco],["E-mail",r=>r.email],["Telefone",r=>r.telefone],["Nascimento",r=>r.nascimento],["Autorizou em",r=>r.consentimento]];return mostrarCsv(e.file,toCsv(cols,rows(k)))}mostrarCsv(e.file,toCsv(e.csv,rows(k)))}
 function dadosCliente(id){const c=cli(id);if(!c)return;const f=[["Nome",c.nome],["CPF",c.cpf],["Endereço",c.endereco],["E-mail",c.email],["Telefone",c.telefone],["Nascimento",c.nascimento],["Autorizou em",c.consentimento]];const txt=f.map(x=>cell(x[0])+";"+cell(x[1])).join("\n")+"\n\n"+toCsv(E.vendas.csv,S.vendas.filter(v=>v.cliente===id));mostrarCsv("dados-"+nz(c.nome).replace(/\W+/g,"-")+".csv",txt)}
 function montar(k){const e=E[k],s=document.createElement("section");s.id=k;s.hidden=true;
- s.innerHTML=`<div class="tools"><button class="btn" type="button" data-a="new">+ ${e.novo}</button><button class="btn s" type="button" data-a="csv">Baixar CSV</button></div><form class="card" hidden></form><div class="tools f">${e.filtros.map(f=>f.o?`<select data-fid="${f.id}" aria-label="${f.lab}">${opts(f)}</select>`:`<input type="search" data-fid="${f.id}" placeholder="${f.lab}" aria-label="${f.lab}">`).join("")}</div><p class="mut" data-r></p><div class="card scroll" data-l></div>`;
+ s.innerHTML=`<div class="tools"><button class="btn" type="button" data-a="new">+ ${e.novo}</button><button class="btn s" type="button" data-a="csv">Baixar CSV</button>${k==="catalogo"?'<button class="btn s" type="button" data-a="pdf">Gerar catálogo em PDF</button>':""}</div><form class="card" hidden></form><div class="tools f">${e.filtros.map(f=>f.o?`<select data-fid="${f.id}" aria-label="${f.lab}">${opts(f)}</select>`:`<input type="search" data-fid="${f.id}" placeholder="${f.lab}" aria-label="${f.lab}">`).join("")}</div><p class="mut" data-r></p><div class="card scroll" data-l></div>`;
  $("#app").appendChild(s);const fm=s.querySelector("form");
  s.querySelectorAll("[data-fid]").forEach(i=>i.oninput=()=>lista(k));
- s.onclick=ev=>{const b=ev.target.closest("button[data-a]");if(!b)return;const a=b.dataset.a,id=b.dataset.id;if(a==="new")abrir(k);else if(a==="cancel")fm.hidden=true;else if(a==="csv")baixar(k);else if(a==="ed")abrir(k,S[k].find(x=>x.id===id));else if(a==="del")remover(k,id);else if(a==="dados")dadosCliente(id)};
+ s.onclick=ev=>{const b=ev.target.closest("button[data-a]");if(!b)return;const a=b.dataset.a,id=b.dataset.id;if(a==="new")abrir(k);else if(a==="cancel")fm.hidden=true;else if(a==="csv")baixar(k);else if(a==="pdf")catPdf();else if(a==="ed")abrir(k,S[k].find(x=>x.id===id));else if(a==="del")remover(k,id);else if(a==="dados")dadosCliente(id)};
  fm.onsubmit=async ev=>{ev.preventDefault();const id=fm.dataset.id,rec=id?S[k].find(x=>x.id===id):null,o=rec?{...rec}:{id:uid()};e.campos.forEach(c=>{if(c.t==="check")return;const el=fm.elements[c.k];let v=el.value.trim();if(c.t==="number")v=v===""?"":+v;o[c.k]=v});const err=e.prep&&e.prep(o,rec,fm);if(err){toast(err);return}const i=S[k].findIndex(x=>x.id===o.id);if(i>=0)S[k][i]=o;else S[k].push(o);fm.hidden=true;await commit(()=>B.save(k,o));toast("Salvo.")}}
 
 /* painel */
@@ -425,6 +463,16 @@ function dre(){const sel=$("#dreAno");const anos=new Set([HY,new Date().getFullY
  $("#dreKpis").innerHTML=[["Receita líquida",rlT,""],["Lucro bruto",tot(r.lb),pc(tot(r.lb))],["EBITDA",tot(r.eb),pc(tot(r.eb))],["Resultado líquido",tot(r.rn),pc(tot(r.rn))]].map(x=>`<div class="card"><div class="mut">${x[0]}</div><div class="big${x[1]<0?" neg":""}">${fv(x[1])}</div>${x[2]?`<div class="mut">${x[2]}</div>`:""}</div>`).join("");
  $("#dreTab").innerHTML=`<table class="dre"><thead><tr><th>Conta</th>${MESES.map(m=>`<th class="n">${m}</th>`).join("")}<th class="n">Total</th></tr></thead><tbody>${r.out.map(l=>{const p=l.kind==="p",f=p?fp:fv,t=p?l.total:tot(l.vals),ng=v=>l.kind==="r"&&v<0?" neg":"";return `<tr class="${l.kind}"><td>${esc(l.label)}</td>${l.vals.map(v=>`<td class="n${ng(v)}">${f(v)}</td>`).join("")}<td class="n${ng(t)}">${f(t)}</td></tr>`}).join("")}</tbody></table>`}
 function dreCsv(){const rd=x=>x==null?"":Math.round(x*100)/100;const cols=[["Conta",l=>l.label]].concat(MESES.map((m,i)=>[m,l=>rd(l.vals[i])])).concat([["Total",l=>l.kind==="p"?rd(l.total):rd(tot(l.vals))]]);mostrarCsv("dre-"+$("#dreAno").value+".csv",toCsv(cols,DRE_OUT))}
+
+/* catálogo em PDF (usa a impressão do navegador e o kit de marca) */
+function catHtml(gen,marca){
+ const L=S.catalogo.slice().sort(E.catalogo.sort).filter(c=>!gen||c.genero===gen),logo=document.querySelector("header img").src,d=new Date(),m=d.toLocaleDateString("pt-BR",{month:"long",year:"numeric"});
+ const sec=(g,t,sub)=>{const A=L.filter(c=>c.genero===g);return A.length?`<section class="cppg"><div class="cphead"><h2>${t}</h2><span>${sub} · ${A.length} fragrâncias</span></div><div class="cpcols">${A.map(c=>`<div class="cpit"><b class="cpc">${esc(c.codigo)}</b><div><div class="cpn">${esc(c.nome)}</div>${marca&&c.marca?`<div class="cpm">${esc(c.marca)}</div>`:""}</div></div>`).join("")}</div></section>`:""};
+ return `<section class="cppg cpcover"><img src="${logo}" alt="Logo Lemaréz"><h1>Lemaréz</h1><p class="cpk">Perfumaria</p><div class="cpl"></div><h2>Catálogo de fragrâncias</h2><p>${m.charAt(0).toUpperCase()+m.slice(1)}</p></section>`+sec("Feminino","Perfumes femininos","Linha IF")+sec("Masculino","Perfumes masculinos","Linha IM")}
+function catRender(){$("#cpBody").innerHTML=catHtml($("#cpGen").value,$("#cpMarca").checked)}
+function catPdf(){catRender();$("#catPrint").hidden=false;document.body.classList.add("pc");$("#catPrint").scrollTop=0}
+function catFechar(){$("#catPrint").hidden=true;document.body.classList.remove("pc")}
+function catImprimir(){try{window.print()}catch(e){toast("Use Ctrl+P (ou Cmd+P) e escolha Salvar como PDF.")}}
 function refresh(){KEYS.forEach(lista);painel();dre()}
 
 async function exemplos(){const c=[{id:uid(),nome:"Ana Exemplo",cpf:"",endereco:"Rua das Flores, 10",email:"ana@exemplo.com",telefone:"11999990001",nascimento:"1990-"+String(new Date().getMonth()+1).padStart(2,"0")+"-15",consentimento:hoje(),criado:hoje()},{id:uid(),nome:"Bruno Exemplo",cpf:"",endereco:"",email:"",telefone:"11999990002",nascimento:"1985-03-02",consentimento:hoje(),criado:hoje()}];
@@ -437,7 +485,7 @@ async function init(){
  try{norm(await B.load())}catch(e){setStatus("err");toast("Não foi possível abrir a planilha. Recarregue a página.");return}
  try{if(!S.catalogo.length){S.catalogo=CAT_RAW.split("\n").map(l=>{const p=l.split("|");return{id:p[0],codigo:p[0],nome:p.slice(1,-1).join("|"),marca:p[p.length-1],genero:p[0].startsWith("IF")?"Feminino":"Masculino"}});await B.many("catalogo",S.catalogo)}
  if(!S.produtos.length){S.produtos=SEED_PROD.map(p=>({id:uid(),nome:p[0],cat:p[1],preco:p[2],custo:""}));await B.many("produtos",S.produtos)}}catch(e){toast("Não foi possível gravar o catálogo inicial.")}
- KEYS.forEach(montar);
+ KEYS.forEach(montar);$("#cpGen").onchange=catRender;$("#cpMarca").onchange=catRender;$("#cpGo").onclick=catImprimir;$("#cpX").onclick=catFechar;document.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&!$("#catPrint").hidden)catFechar()});
  const TB=[["painel","Painel"],["dre","DRE"],...KEYS.map(k=>[k,E[k].tab])];
  $("#nav").innerHTML=TB.map((t,i)=>`<button type="button" role="tab" data-t="${t[0]}" aria-selected="${i===0}">${t[1]}</button>`).join("");
  $("#nav").onclick=ev=>{const t=ev.target.dataset.t;if(!t)return;document.querySelectorAll("#nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===t));TB.forEach(x=>$("#"+x[0]).hidden=x[0]!==t);if(location.hash!=="#"+t)try{history.replaceState(null,"","#"+t)}catch(e){}};
